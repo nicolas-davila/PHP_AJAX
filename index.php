@@ -14,13 +14,14 @@
 <body>
     <h2>Testing how to bring a message</h2>
     <button onclick="bringMessage()">Click here!</button>
-    <p id="result"></p>
+    <div id="result"></div>
+    <!-- <p id="result"></p> -->
 
 
     <script>
         function bringMessage() {
             // se declara a variável e faz uma request
-            let xhr = XMLHttpRequest();
+            let xhr = new XMLHttpRequest();
 
             // Aqui configura a requisição variavel.open("method", "arquivo.php", true). O true é para ser assíncrono
             xhr.open("GET", "message.php", true);
