@@ -9,9 +9,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testando AJAX pela primeira vez</title>
+    <title>Testing AJAX for the first time!</title>
 </head>
 <body>
-    
+    <h2>Testing how to bring a message</h2>
+    <button onclick="bringMessage()">Click here!</button>
+    <p id="result"></p>
+
+
+    <script>
+        function bringMessage() {
+            // se declara a variável e faz uma request
+            let xhr = XMLHttpRequest();
+
+            // Aqui configura a requisição variavel.open("method", "arquivo.php", true). O true é para ser assíncrono
+            xhr.open("GET", "message.php", true);
+            
+            // O que fazer quando a requisição chegar
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById("result").innerHTML = xhr.responseText;
+                };
+            };
+            xhr.send();
+        }
+    </script>
+
 </body>
 </html>
