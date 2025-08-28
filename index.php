@@ -20,7 +20,7 @@
 
     <script>
         function bringMessage() {
-            // se declara a variável e faz uma request
+            // se declara a variável e faz uma request. Sempre colocar "new".
             let xhr = new XMLHttpRequest();
 
             // Aqui configura a requisição variavel.open("method", "arquivo.php", true). O true é para ser assíncrono
