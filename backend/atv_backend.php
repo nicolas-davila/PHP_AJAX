@@ -1,24 +1,22 @@
 <?php
 
-    require("./PHP_AJAX/db.php");
+    include("../db.php");
 
-    if (isset($_POST['atividade']) && isset($_POST['usuario_atribuido'])) {
-        $atividade = $_POST['atividade'];
-        $usuario_atribuido = $_POST['usuario_atribuido'];
+    $atividade = $_POST["atividade"] ?? "";
+    $usuarioAtribuido = $_POST["usuarioAtribuido"] ?? "";
 
-        try {
-            $sql = "INSERT INTO atividades (atividade, usuario_atribuido) VALUES (:atividade, :usuario_atribuido)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->bindParam(":atividade", $nome);
-            $stmt->bindParam(":usuario_atribuido", $email);
+    if(!empty($atividade) && !empty($usuarioAtribuido)){
+        $atividade = $conn->real_escape_string($atividade);
+        $usuarioAtribuido = $conn->real_escape_string($usuarioAtribuido);
 
-            if ($stmt->execute()) {
-                echo "✅ Cadastro realizado com sucesso!";
-            } else {
-                echo "❌ Erro ao cadastrar.";
-            }
-        } catch (PDOException $e) {
-            echo "Erro: " . $e->getMessage();
-        } 
+        $sql = "INSERT INTO atividades (atividade, usuario_atribuido) VALUES ('$atividade', '$usuarioAtribuido')";
+
+        if($conn->query($sql)===TRUE) {
+            echo "Atividade cadastrada com sucesso!";
+        } else {
+            echo "Erro" . $conn->error;
+        }
     }
+
+    $conn->close();
 ?>

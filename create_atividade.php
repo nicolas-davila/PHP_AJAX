@@ -5,40 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar atividade</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
     <h2>Cadastrar Usuário</h2>
 
-    <form>
-        <input type="text" id="atividade">
-        <select id="usuario_atribuido">
+    <form id="formCadastro">
+        <input type="text" id="atividade" name="atividade" required>
+        <select id="usuarioAtribuido" name="usuario_atribuido" required>
             <option>Nicolas</option>
             <option>Ana Julia</option>
             <option>Ana Beatriz</option>
         </select>
-        <button type="submit" onclick="cadastrarUsuario()">Cadastrar</button>
+        <button type="submit">Cadastrar</button>
     </form>
 
+    <div id="resultado"></div>
+
     <script>
-        function cadastrarUsuario(event) {
-            let atividade = document.getElementById("atividade").value;
-            let usuario_atribuido = document.getElementById("usuario_atribuido").value;
+        $(document).ready(function() {
+            $("#formCadastro").on("submit", function(e){
+                e.preventDefault();
 
-            let cadastrar = new XMLHttpRequest();
-            cadastrar.open("POST", "atv_backend.php", true);
-            cadastrar.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-            cadastrar.onload = function() {
-                if (cadastrar.status == 200) {
-                    console.log(cadastrar.responseText); // mostra o retorno do PHP
-                } else {
-                    console.log("Erro.");
-                }
-            };
-
-            cadastrar.send("atividade=" + encodeURIComponent(atividade) + "&usuario_atribuido=" + encodeURIComponent(usuario_atribuido));
-        }
+                $.ajax({
+                    url:"./backend/atv_backend.php",
+                    type:"POST",
+                    data: {
+                        atividade: $("#atividade").val(),
+                        usuarioAtribuido: $("#usuarioAtribuido").val()
+                    },
+                    success: function(resposta) {
+                        $("#resultado").html(resposta);
+                    }
+                });
+            });
+        });
     </script>
 </body>
 
