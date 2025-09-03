@@ -14,9 +14,9 @@ include("db.php");
 </head>
 
 <body>
-    <h2>Testing how to bring a message</h2>
-    <button onclick="bringMessage()">Click here!</button>
-    <div id="result"></div>
+    <h2>Teste de como trazer mensagem via ajax!</h2>
+    <button onclick="trazerMensagem()">Click here!</button>
+    <div id="resultado"></div>
     <h2>Página de Receitas</h2>
     <a href="create_atividade.php">Criar nova atividade</a>
     <a href="create_usuario.php">Criar um novo usuário</a>
@@ -42,7 +42,7 @@ include("db.php");
 
 
     <script>
-        function bringMessage() {
+        function trazerMensagem() {
             // se declara a variável e faz uma request. Sempre colocar "new".
             let xhr = new XMLHttpRequest();
 
@@ -52,7 +52,7 @@ include("db.php");
             // O que fazer quando a requisição chegar
             xhr.onload = function() {
                 if (xhr.status === 200) {
-                    document.getElementById("result").innerHTML = xhr.responseText;
+                    document.getElementById("resultado").innerHTML = xhr.responseText;
                 };
             };
             xhr.send();

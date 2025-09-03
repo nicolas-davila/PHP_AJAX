@@ -22,8 +22,6 @@
 
     <script>
         function cadastrarUsuario(event) {
-            event.preventDefault(); // impede recarregar
-
             let atividade = document.getElementById("atividade").value;
             let usuario_atribuido = document.getElementById("usuario_atribuido").value;
 
