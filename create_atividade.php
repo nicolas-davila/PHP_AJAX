@@ -17,6 +17,7 @@
             <option>Nicolas</option>
             <option>Ana Julia</option>
             <option>Ana Beatriz</option>
+            <option>César</option>
         </select>
         <button type="submit">Cadastrar</button>
     </form>
