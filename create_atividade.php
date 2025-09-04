@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h2>Cadastrar Usuário</h2>
+    <h2>Cadastrar Atividade</h2>
 
     <form id="formCadastro">
         <input type="text" id="atividade" name="atividade" required>
