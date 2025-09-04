@@ -16,9 +16,6 @@ include("db.php");
 </head>
 
 <body>
-    <h2>Teste de como trazer mensagem via ajax!</h2>
-    <button onclick="trazerMensagem()">Click here!</button>
-    <div id="resultado"></div>
     <h2>Página de Receitas</h2>
     <a href="create_atividade.php">Criar nova atividade</a>
     <a href="create_usuario.php">Criar um novo usuário</a>
