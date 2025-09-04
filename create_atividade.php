@@ -18,6 +18,11 @@
             <option>Ana Julia</option>
             <option>Ana Beatriz</option>
         </select>
+        <select id="producao">
+            <option>pendente</option>
+            <option>pausado</option>
+            <option>concluido</option>
+        </select>
         <button type="submit">Cadastrar</button>
     </form>
 
@@ -33,7 +38,8 @@
                     type:"POST",
                     data: {
                         atividade: $("#atividade").val(),
-                        usuarioAtribuido: $("#usuarioAtribuido").val()
+                        usuarioAtribuido: $("#usuarioAtribuido").val(),
+                        producao: $("#producao").val()
                     },
                     success: function(resposta) {
                         $("#resultado").html(resposta);

@@ -24,7 +24,7 @@ include("db.php");
     <div id="listaUsuarios"></div>
 
     <script>
-        $(document).ready(function (){
+        $(document).ready(function() {
             function carregarAtividades() {
                 $.ajax({
                     url: "listar.php",
@@ -33,9 +33,26 @@ include("db.php");
                         $("#listaUsuarios").html(dados);
                     }
                 })
-            };
-            carregarAtividades();
+            };carregarAtividades();
         })
+
+            $(document).on('click', '.excluir', function() {
+                let id = $(this).data('id');
+
+                if (confirm("Deseja realmente excluir esta atividade?")) {
+                    $.ajax({
+                        url: "backend/excluir_atividade.php",
+                        type: "POST",
+                        data: {
+                            id: id
+                        },
+                        success: function(resposta) {
+                            alert(resposta);
+                            carregarAtividades();
+                        }
+                    })
+                }
+            });
     </script>
 
 </body>

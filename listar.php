@@ -21,7 +21,12 @@
             echo "<td>".$row['id']."</td>";
             echo "<td>".$row['atividade']."</td>";
             echo "<td>".$row['usuario_atribuido']."</td>";
+            echo "<td>".$row['producao']."</td>";
             echo "<td>".$row['insumos']."</td>";
+            echo "<td>
+                    <button class='editar' data-id='" . $row['id'] . "'>Editar</button>
+                    <button class='excluir' data-id='" . $row['id'] . "'>Excluir</button>
+                </td>";
             echo "</tr>";
         }
         echo "</table>";
