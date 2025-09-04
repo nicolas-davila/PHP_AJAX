@@ -52,6 +52,7 @@ include("db.php");
                         }
                     })
                 }
+                carregarAtividades();
             });
     </script>
 
