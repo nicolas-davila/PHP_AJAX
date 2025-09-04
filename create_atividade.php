@@ -37,6 +37,7 @@
                     },
                     success: function(resposta) {
                         $("#resultado").html(resposta);
+                        window.location.href="index.php";
                     }
                 });
             });
