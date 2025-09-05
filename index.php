@@ -25,7 +25,14 @@ include("db.php");
 
     <script>
         $(document).ready(function() {
-            function carregarAtividades() {
+            carregarAtividades();
+        })
+
+        function editarAtividade() {
+            alert("Função ok!");
+        }
+
+        function carregarAtividades() {
                 $.ajax({
                     url: "listar.php",
                     type: "GET",
@@ -33,8 +40,7 @@ include("db.php");
                         $("#listaUsuarios").html(dados);
                     }
                 })
-            };carregarAtividades();
-        })
+            };
 
             $(document).on('click', '.excluir', function() {
                 let id = $(this).data('id');
@@ -52,7 +58,6 @@ include("db.php");
                         }
                     })
                 }
-                carregarAtividades();
             });
     </script>
 

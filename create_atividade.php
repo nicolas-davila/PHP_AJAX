@@ -15,8 +15,8 @@
         <input type="text" id="atividade" name="atividade" required>
         <select id="usuarioAtribuido" name="usuario_atribuido" required>
             <option>Nicolas</option>
-            <option>Ana Julia</option>
-            <option>Ana Beatriz</option>
+            <option>Joreg</option>
+            <option>Carlos</option>
         </select>
         <select id="producao">
             <option>pendente</option>
