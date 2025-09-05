@@ -33,5 +33,5 @@
     } else {
         echo "Nenhuma atividade encontrada";
     };
-
+    $conn->close();
 ?>
