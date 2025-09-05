@@ -5,7 +5,7 @@ include("db.php");
 ?>
 
 <!DOCTYPE html>
-<html lang="pt=BR">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -21,44 +21,56 @@ include("db.php");
     <a href="create_usuario.php">Criar um novo usuário</a>
     <a href="create_insumos.php">Criar Insumos</a>
 
-    <div id="listaUsuarios"></div>
+    <div id="listaAtividades"></div>
+    <div id="atualizaAtividade"></div>
 
     <script>
         $(document).ready(function() {
             carregarAtividades();
         })
 
-        function editarAtividade() {
-            alert("Função ok!");
-        }
-
         function carregarAtividades() {
+            $.ajax({
+                url: "listar.php",
+                type: "GET",
+                success: function(dados) {
+                    $("#listaAtividades").html(dados);
+                }
+            })
+        };
+
+        function editarAtividade(botao) {
+            let id = $(botao).data('id');
+            $.ajax ({
+                url: "editar_atividade.php",
+                type: "GET",
+                data: {
+                    id:id
+                },
+                success: function(resposta) {
+                    $("#atualizaAtividade").html(resposta);
+                }
+            })
+
+        };
+
+        $(document).on('click', '.excluir', function() {
+            let id = $(this).data('id');
+
+            if (confirm("Deseja realmente excluir esta atividade?")) {
                 $.ajax({
-                    url: "listar.php",
-                    type: "GET",
-                    success: function(dados) {
-                        $("#listaUsuarios").html(dados);
+                    url: "backend/excluir_atividade.php",
+                    type: "POST",
+                    data: {
+                        id: id
+                    },
+                    success: function(resposta) {
+                        alert(resposta);
+                        carregarAtividades();
                     }
                 })
-            };
-
-            $(document).on('click', '.excluir', function() {
-                let id = $(this).data('id');
-
-                if (confirm("Deseja realmente excluir esta atividade?")) {
-                    $.ajax({
-                        url: "backend/excluir_atividade.php",
-                        type: "POST",
-                        data: {
-                            id: id
-                        },
-                        success: function(resposta) {
-                            alert(resposta);
-                            carregarAtividades();
-                        }
-                    })
-                }
-            });
+            }
+        });
     </script>
 
 </body>

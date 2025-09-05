@@ -12,7 +12,16 @@
     <h2>Cadastrar Atividade</h2>
 
     <form id="formCadastro">
-        <input type="text" id="atividade" name="atividade" required>
+        <select name="atividade" id="atividade" required>
+            <option>Separar ingredientes</option>
+            <option>Bater Ovos</option>
+            <option>Misturar ovos para massa homogênea</option>
+            <option>Acrescentar leite e farinha</option>
+            <option>Acrescentar ovo e fermento na massa</option>
+            <option>Untar forma</option>
+            <option>Despejar massa na forma</option>
+            <option>Colocar para assar em um forno</option>
+        </select>
         <select id="usuarioAtribuido" name="usuario_atribuido" required>
             <option>Nicolas</option>
             <option>Joreg</option>
