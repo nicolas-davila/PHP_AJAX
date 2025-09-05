@@ -2,7 +2,7 @@
 
     include "db.php";
 
-    $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+    $id = $_GET["id"] ?? 0;
     if ($id === 0) {
         die("ID inválido ou não enviado.");
     }
@@ -12,6 +12,7 @@
 ?>
 <h3>Editar Atividade</h3>
 <form id="formEdicao">
+    <input type="hidden" name="id" value="<?= $atividade['id'] ?>">
     <select name="atividade" id="atividade" required>
         <option>
             <?php echo $atividade['atividade'] ?>
@@ -25,7 +26,7 @@
         <option>Despejar massa na forma</option>
         <option>Colocar para assar em um forno</option>
     </select>
-    <select id="usuarioAtribuido" name="usuario_atribuido" required>
+    <select id="usuarioAtribuido" name="usuarioAtribuido" required>
         <option>
             <?php echo $atividade['usuario_atribuido'] ?>
         </option>
@@ -38,10 +39,5 @@
         <option>pausado</option>
         <option>concluido</option>
     </select>
-    <button type="submit">Atualizar</button>
+    <button type="submit" onclick="atualizaAtividade()">Atualizar</button>
 </form>
-
-<script>
-
-    
-</script>

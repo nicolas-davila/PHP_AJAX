@@ -54,6 +54,24 @@ include("db.php");
 
         };
 
+        function atualizaAtividade() {
+            let id = $("input[name='id']").val();
+            $.ajax ({
+                url: "backend/editar_atividade.php",
+                type: "POST",
+                data: {
+                    id:id,
+                    atividade: $("#atividade").val(),
+                    usuarioAtribuido: $("#usuarioAtribuido").val(),
+                    producao: $("#producao").val()
+                },
+                success: function(resposta) {
+                    alert(resposta);
+                    carregarAtividades();
+                }
+            })
+        }
+
         $(document).on('click', '.excluir', function() {
             let id = $(this).data('id');
 
