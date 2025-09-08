@@ -4,7 +4,7 @@
    $host="localhost";
    $db="preparo_bolo";
    $user="root";
-   $pass= "012220";
+   $pass= "";
 
    $conn = mysqli_connect("$host", "$user", "$pass", "$db");
    
