@@ -12,7 +12,7 @@
     <h2>Cadastrar Atividade</h2>
 
     <form id="formCadastroInsumos">
-        <input id="insumos" name="insumos" type="text" placeholder="Ex: 5 colheres de açucar" required>
+        <input id="insumos" name="insumos" type="text" placeholder="Ex: açucar" required>
         <button type="submit">Cadastrar</button>
     </form>
 
@@ -27,11 +27,11 @@
                     url:"./backend/create_insumos.php",
                     type:"POST",
                     data: {
-                        atividade: $("#insumos").val(),
+                        insumos: $("#insumos").val(),
                     },
                     success: function(resposta) {
                         $("#resultado").html(resposta);
-                        // window.location.href="index.php";
+                        window.location.href="index.php";
                     }
                 });
             });
