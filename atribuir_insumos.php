@@ -16,10 +16,20 @@
 <form id="formEdicao">
     <input type="hidden" name="id" value="<?= $atividade['id'] ?>">
     <p type="text" name="atividade" id="atividade" required>
-        <?php echo $atividade['atividade'] ?>
+        Atividade: <?php echo $atividade['atividade'] ?>
     </p>
     <p id="usuarioAtribuido" name="usuarioAtribuido" required>
-         <?php echo $atividade['usuario_atribuido'] ?>
+        Pessoa atribuida:  <?php echo $atividade['usuario_atribuido'] ?>
     </p>
-    <button type="submit" onclick="atribuiInsumos()">Atualizar</button>
+    <select id="insumos" name="insumos">
+        <?php 
+        
+            $insumos = mysqli_query($conn, "SELECT * FROM insumos");
+            while($insumo = mysqli_fetch_assoc($insumos)) {
+                echo "<option value='{$insumo['id']}'>{$insumo['descricao_insumos']}</option>";
+            };
+
+        ?>
+    </select>
+    <button type="submit" onclick="atribuiInsumos()">Atribuir Insumos</button>
 </form>

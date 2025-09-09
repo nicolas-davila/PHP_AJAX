@@ -23,6 +23,7 @@ include("db.php");
 
     <div id="listaAtividades"></div>
     <div id="atualizaAtividade"></div>
+    <div id="atribuirInsumos"></div>
 
     <script>
         $(document).ready(function() {
@@ -42,10 +43,25 @@ include("db.php");
         function atribuirInsumos(botao) {
             let id = $(botao).data('id');
             $.ajax ({
-                url: "atribuir_insumos",
+                url: "atribuir_insumos.php",
                 type: "GET",
                 data: {
                     id:id
+                },
+                success: function(resposta) {
+                    $("#atribuirInsumos").html(resposta);
+                }
+            })
+        }
+
+        function atribuiInsumos() {
+            let id = $("input[name='id']").val();
+            $.ajax ({
+                url: "backend/atribuir_insumos.php",
+                type: "POST",
+                data: {
+                    id:id,
+                    insumos: $("#insumos").val()
                 },
                 success: function(resposta) {
                     alert(resposta);
