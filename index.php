@@ -39,6 +39,21 @@ include("db.php");
             })
         };
 
+        function atribuirInsumos(botao) {
+            let id = $(botao).data('id');
+            $.ajax ({
+                url: "atribuir_insumos",
+                type: "GET",
+                data: {
+                    id:id
+                },
+                success: function(resposta) {
+                    alert(resposta);
+                    carregarAtividades();
+                }
+            })
+        }
+
         function editarAtividade(botao) {
             let id = $(botao).data('id');
             $.ajax ({
