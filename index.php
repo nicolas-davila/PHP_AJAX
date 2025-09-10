@@ -18,7 +18,7 @@ include("db.php");
 <body>
     <h2>Página de Receitas</h2>
     <a href="create_atividade.php">Criar nova atividade</a>
-    <a href="create_usuario.php">Criar um novo usuário</a>
+    <a href="create_usuario.html">Criar um novo usuário</a>
     <a href="create_insumos.php">Criar Insumos</a>
 
     <div id="listaAtividades"></div>
@@ -61,7 +61,8 @@ include("db.php");
                 type: "POST",
                 data: {
                     id:id,
-                    insumos: $("#insumos").val()
+                    insumos_id: $("#insumos_id").val(),
+                    informacao_insumos: $("#informacao_insumos").val()
                 },
                 success: function(resposta) {
                     alert(resposta);

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receitas</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <h2>Cadastrar Usuário</h2>
+
+    <form id="formCadastro">
+        <input type="text" name="nome" id="nome">
+        <button type="submit">Cadastrar</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        $(document).ready(function() {
+            $("#formCadastro").on("submit", function(e){
+                e.preventDefault();
+
+                $.ajax({
+                    url:"./backend/cadastra_usuario.php",
+                    type:"POST",
+                    data: {
+                        nome: $("#nome").val()
+                    },
+                    success: function(resposta) {
+                        $("#resultado").html(resposta);
+                        window.location.href="index.php";
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

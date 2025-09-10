@@ -15,13 +15,13 @@
 <h3>Atribuir Insumos</h3>
 <form id="formEdicao">
     <input type="hidden" name="id" value="<?= $atividade['id'] ?>">
-    <p type="text" name="atividade" id="atividade" required>
+    <p id="atividade" name="atividade">
         Atividade: <?php echo $atividade['atividade'] ?>
     </p>
-    <p id="usuarioAtribuido" name="usuarioAtribuido" required>
+    <p id="usuarioAtribuido" name="usuarioAtribuido">
         Pessoa atribuida:  <?php echo $atividade['usuario_atribuido'] ?>
     </p>
-    <select id="insumos" name="insumos">
+    <select id="insumos_id" name="insumos_id">
         <?php 
         
             $insumos = mysqli_query($conn, "SELECT * FROM insumos");
@@ -31,5 +31,6 @@
 
         ?>
     </select>
+    <input type="text" id="informacao_insumos" name="informacao_insumos" required>
     <button type="submit" onclick="atribuiInsumos()">Atribuir Insumos</button>
 </form>

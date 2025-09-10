@@ -1,3 +1,9 @@
+<?php
+
+        include "db.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -23,9 +29,14 @@
             <option>Colocar para assar em um forno</option>
         </select>
         <select id="usuarioAtribuido" name="usuario_atribuido" required>
-            <option>Nicolas</option>
-            <option>Joreg</option>
-            <option>Carlos</option>
+            <?php
+        
+                $usuarios = mysqli_query($conn, "SELECT * FROM usuarios");
+                while($usuario = mysqli_fetch_assoc($usuarios)){
+                    echo "<option value='{$usuario['id']}'>{$usuario['nome']}</option>";
+                }
+
+            ?>
         </select>
         <select id="producao">
             <option>pendente</option>

@@ -27,12 +27,14 @@
         <option>Colocar para assar em um forno</option>
     </select>
     <select id="usuarioAtribuido" name="usuarioAtribuido" required>
-        <option>
-            <?php echo $atividade['usuario_atribuido'] ?>
-        </option>
-        <option>Carlos</option>
-        <option>João</option>
-        <option>Gabriel</option>
+        <?php
+        
+            $usuarios = mysqli_query($conn, "SELECT * FROM usuarios");
+            while($usuario = mysqli_fetch_assoc($usuarios)){
+                echo "<option value='{$usuario['id']}'>{$usuario['nome']}</option>";
+            }
+
+        ?>
     </select>
     <select id="producao">
         <option>pendente</option>

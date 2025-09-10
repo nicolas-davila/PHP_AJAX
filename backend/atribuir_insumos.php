@@ -3,12 +3,14 @@
     include "../db.php";
 
     $id = $_POST['id'] ?? "";
-    $insumos = $POST['insumos'] ?? "";
+    $insumos_id = $_POST['insumos_id'] ?? "";
+    $informacao_insumos = $_POST['informacao_insumos'] ?? "";
 
     if(!empty($id)){
-        $insumos = $conn->real_escape_string($insumos);
+        $insumos_id = $conn->real_escape_string($insumos_id);
+        $informacao_insumos = $conn->real_escape_string($informacao_insumos);
 
-        $sql = "UPDATE atividades SET insumos='$insumos' WHERE id=$id";
+        $sql = "INSERT INTO atividade_insumos (atividade_id, insumos_id, informacao_insumos) VALUES ($id, $insumos_id, '$informacao_insumos')";
 
         if($conn->query($sql)===TRUE) {
             echo "Insumos atribuido com sucesso!";
