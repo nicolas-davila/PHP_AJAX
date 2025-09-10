@@ -32,11 +32,13 @@
 
             echo "<td>";
             
+
                 if($insumos_result->num_rows > 0) {
                     while($insumo = $insumos_result->fetch_assoc()) {
                         echo $insumo['descricao_insumos'] . " - " .$insumo['informacao_insumos'] . "<br>";
                     };
                 };
+                
 
             echo"</td>";
             echo "<td>
