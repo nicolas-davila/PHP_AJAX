@@ -1,13 +1,30 @@
 <?php
 
-    include "db.php";
+     include "db.php";
 
-    $id = $_GET['id'] ?? 0;
+    // $id = $_GET['id'] ?? 0;
 
+    // if ($id === 0) {
+    //     die("ID inválido ou não enviado.");
+    // }
+    // $result = mysqli_query($conn, "SELECT a.*, u.nome AS usuario_nome FROM atividades AS a 
+    // LEFT JOIN usuarios AS u ON a.usuario_atribuido = u.id WHERE id = $id");
+    // $atividade = mysqli_fetch_assoc($result);
+
+    $id = (int) ($_GET['id'] ?? 0);
     if ($id === 0) {
         die("ID inválido ou não enviado.");
     }
-    $result = mysqli_query($conn, "SELECT * FROM atividades WHERE id = $id");
+
+    $sql = " SELECT a.*, u.nome AS usuario_nome FROM atividades AS a 
+        LEFT JOIN usuarios AS u ON a.usuario_atribuido = u.id WHERE a.id = $id";
+
+    $result = mysqli_query($conn, $sql);
+
+    if (!$result) {
+        die("Erro na query: " . mysqli_error($conn));
+    }
+
     $atividade = mysqli_fetch_assoc($result);
 
 ?>
@@ -19,7 +36,7 @@
         Atividade: <?php echo $atividade['atividade'] ?>
     </p>
     <p id="usuarioAtribuido" name="usuarioAtribuido">
-        Pessoa atribuida:  <?php echo $atividade['usuario_atribuido'] ?>
+        Pessoa atribuida:  <?php echo $atividade['usuario_nome'] ?>
     </p>
     <select id="insumos_id" name="insumos_id">
         <?php 

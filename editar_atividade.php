@@ -28,7 +28,8 @@
     </select>
     <select id="usuarioAtribuido" name="usuarioAtribuido" required>
         <?php
-        
+
+
             $usuarios = mysqli_query($conn, "SELECT * FROM usuarios");
             while($usuario = mysqli_fetch_assoc($usuarios)){
                 echo "<option value='{$usuario['id']}'>{$usuario['nome']}</option>";
