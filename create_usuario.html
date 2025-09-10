@@ -13,13 +13,15 @@
 
     <form id="formCadastro">
         <input type="text" name="nome" id="nome">
-        <button type="submit">Cadastrar</button>
+        <button type="submit">Cadastrar Usuário</button>
     </form>
 
-    <div id="resultado"></div>
+    <div id="listaUsuarios"></div>
 
     <script>
         $(document).ready(function() {
+            carregarUsuarios();
+
             $("#formCadastro").on("submit", function(e){
                 e.preventDefault();
 
@@ -35,6 +37,34 @@
                     }
                 });
             });
+        });
+
+        function carregarUsuarios() {
+            $.ajax({
+                url: "listar_usuarios.php",
+                type: "GET",
+                success: function(dados) {
+                    $("#listaUsuarios").html(dados);
+                }
+            })
+        };
+
+         $(document).on('click', '.excluirUsuario', function() {
+            let id = $(this).data('id');
+
+            if (confirm("Deseja realmente excluir esta atividade?")) {
+                $.ajax({
+                    url: "backend/excluir_atividade.php",
+                    type: "POST",
+                    data: {
+                        id: id
+                    },
+                    success: function(resposta) {
+                        alert(resposta);
+                        carregarUsuarios();
+                    }
+                })
+            }
         });
     </script>
 </body>
