@@ -24,7 +24,7 @@
         <option>Acrescentar ovo e fermento na massa</option>
         <option>Untar forma</option>
         <option>Despejar massa na forma</option>
-        <option>Colocar para assar em um forno</option>
+        <option>Colocar para assar no forno</option>
     </select>
     <select id="usuarioAtribuido" name="usuarioAtribuido" required>
         <?php

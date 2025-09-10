@@ -48,6 +48,6 @@
 
         ?>
     </select>
-    <input type="text" id="informacao_insumos" name="informacao_insumos" required>
+    <input type="text" id="informacao_insumos" name="informacao_insumos">
     <button type="submit" onclick="atribuiInsumos()">Atribuir Insumos</button>
 </form>
